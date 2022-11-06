@@ -28,7 +28,6 @@ $("textarea").each(function (index) {
     // console.log( index + ": " + $(this) );
     // console.log('span',$(this).siblings( ".hour" ).text())
     var blockHour = parseInt($(this).siblings(".hour").attr('id'))
-    console.log('check', blockHour)
     if (blockHour === currentMilitaryHour) {
         //change the css to show that its current hour
         // color grey to represent past 
@@ -41,22 +40,36 @@ $("textarea").each(function (index) {
     }
     else {
         $(this).addClass('future')
-        console.log(blockHour)
     }
 });
 
 // be able to click into timeblock 
     // input information
-var textareaEl = $('.description');
 
+var textAreaEl = $('.description')
+var storedText = localStorage.getItem("textInput");
 
 // button to save 
     // save to local storage 
 var saveButton = $('.saveBtn');
-saveButton.on('click', function () {
-    localStorage.setItem("textarea", textareaEl)
-})
+saveButton.on("click", save)
 
+function save() {
+    event.preventDefault()
+    var textDescription = textAreaEl.val();
+    localStorage.setItem("textInput", textDescription);
+}
+
+if (textAreaEl) {
+    textDescription = storedText
+}
+
+
+// 
+// $(".saveBtn").click(function()
+// {
+//    $(this).data('clicked', true);
+// });
 // Questions:
 
 // So will I need to indicate that it is a certain time on the planner in order to show past, present, future?? 
