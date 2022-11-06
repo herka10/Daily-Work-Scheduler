@@ -18,3 +18,5 @@ SO THAT I can manage my time effectively
 
 
 ## Deployed Link
+
+https://herka10.github.io/Daily-Work-Scheduler/
