@@ -28,6 +28,9 @@ $("textarea").each(function (index) {
     // console.log( index + ": " + $(this) );
     // console.log('span',$(this).siblings( ".hour" ).text())
     var blockHour = parseInt($(this).siblings(".hour").attr('id'))
+    var storedText = localStorage.getItem(blockHour);
+    $(this).val(storedText)
+    console.log("storedText:", storedText)
     if (blockHour === currentMilitaryHour) {
         //change the css to show that its current hour
         // color grey to represent past 
@@ -43,11 +46,6 @@ $("textarea").each(function (index) {
     }
 });
 
-// be able to click into timeblock 
-    // input information
-
-var textAreaEl = $('.description')
-var storedText = localStorage.getItem("textInput");
 
 // button to save 
     // save to local storage 
@@ -55,14 +53,12 @@ var saveButton = $('.saveBtn');
 saveButton.on("click", save)
 
 function save() {
-    event.preventDefault()
-    var textDescription = textAreaEl.val();
-    localStorage.setItem("textInput", textDescription);
+    var textDescription = ($(this).siblings(".description").val())
+    var key = ($(this).siblings(".hour").attr('id'))
+    localStorage.setItem(key, textDescription);
 }
 
-if (textAreaEl) {
-    textDescription = storedText
-}
+
 
 
 // 
